@@ -2,20 +2,26 @@
 
 This is a collection of one-liner server. The idea is from this [gist](https://gist.github.com/willurd/5720255). I create this repo because there are more solutions scattered in the comments. It would be better that we have a space to gather them. I appreciate all the contributors to the original discussion thread. 
 
-I use the original setting for all the examples. All of them will run the server at port `8080` in your current working directory. 
+I use the original setting for all the examples. All of them will run the server at port `8000` in your current working directory. 
 
 ## Contents
 
 ### Language
 
 - [Clojure](#clojure)
+- [Crystal](#crystal)
+- [Elixir](#elixir)
 - [Erlang](#erlang)
 - [Go](#go)
+- [Haskell](#haskell)
+- [Lisp](#lisp)
 - [Node.js](#nodejs)
 - [Perl](#perl)
 - [PHP](#php)
 - [Python](#python)
+- [R](#r)
 - [Ruby](#ruby)
+- [Rust](#rust)
 - [Other](#other)
 
 ### Meta
@@ -33,16 +39,19 @@ If you have any suggestions, drop them in a new pull request. To get on this lis
 ### Leiningen
 
 ```shell
-$ lein simpleton 8080
+$ lein simpleton 8000
 ```
 
-## Go
-
-### Spark
+## Crystal
 
 ```shell
-$ go get github.com/rif/spark
-$ spark -port 8000 .
+$ crystal eval 'require "http/server"; HTTP::Server.new(8000, HTTP::StaticFileHandler.new(".")).listen'
+```
+
+## Elixir
+
+```
+elixir --no-halt --app inets -e ":inets.start(:httpd,[{:server_name,'s'},{:document_root,'.'},{:server_root,'.'},{:port,8000}])"
 ```
 
 ## Erlang
@@ -51,7 +60,77 @@ $ spark -port 8000 .
 $ erl -s inets -eval 'inets:start(httpd,[{server_name,"NAME"},{document_root, "."},{server_root, "."},{port, 8000},{mime_types,[{"html","text/html"},{"htm","text/html"},{"js","text/javascript"},{"css","text/css"},{"gif","image/gif"},{"jpg","image/jpeg"},{"jpeg","image/jpeg"},{"png","image/png"}]}]).'
 ```
 
+## Go
+
+### Algernon
+```shell
+$ go get -u github.com/xyproto/algernon
+$ algernon -x 8000
+```
+
+### Candy
+
+```shell
+caddy -port 8000
+```
+
+### Gost
+
+```shell
+$ go get github.com/vwochnik/gost
+$ gost -port 8888 .
+```
+
+### Ram
+```shell
+$ go get -u github.com/m3ng9i/ran
+$ ran -p 8000
+```
+
+### Spark
+
+```shell
+$ go get github.com/rif/spark
+$ spark -port 8000 .
+```
+
+## Haskell
+
+### maid
+```shell
+cabal install maid
+maid 8000
+```
+
+## Lisp
+
+### Clack
+
+```
+$ ros install clack
+$ clackup <(echo "(lack:builder (:static :path #'identity) #'identity)")
+```
+
 ## Node.js
+
+### Anywhere
+```shell
+$ npm install anywhere -g
+$ anywhere -p 8000
+```
+
+### glance
+
+```shell
+$ npm install -g glance
+$ glance -p 8000
+```
+
+### Harp
+```shell
+$ npm install -g harp
+$ harp server --port 8000
+```
 
 ### http-server
 
@@ -65,6 +144,12 @@ $ http-server -p 8000
 ```shell
 $ npm install -g node-static
 $ static -p 8000
+```
+
+### Superstatic
+```shell
+$ npm install -g superstatic
+$ superstatic public --port 8000
 ```
 
 ## Perl
@@ -97,8 +182,14 @@ $ php -S 127.0.0.1:8000
 ### Drush
 
 ```shell
-$ drush rs 8080
-````
+$ drush rs 8000
+```
+
+### Laravel
+
+```shell
+$ php artisan serve --host=127.0.0.1 --port=8000
+```
 
 ## Python
 
@@ -121,6 +212,11 @@ $ pip install twisted
 $ twistd -n web -p 8000 --path .
 ```
 
+## R
+```shell
+$ Rscript -e 'servr::httd()' -p8000
+```
+
 ## Ruby
 
 ```shell
@@ -140,11 +236,31 @@ $ gem install knod
 $ knod -p 8000
 ```
 
+### Rack
+```shell
+$ gem install rack
+$ rackup -b 'use Rack::Static, :index => 'index.html'; run Rack::File.new('.')"
+```
+
+### Serve
+
+```shell
+$ gem install serve
+$ serve 8000
+```
+
 ### Sinatra
 
 ```shell
 $ gem install sinatra
 $ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
+```
+
+## Rust
+
+```shell
+$ cargo install https
+$ http -p 8000
 ```
 
 ## Other
@@ -155,12 +271,16 @@ $ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
 $ busybox httpd -f -p 8000
 ```
 
+### ngrok
+```shell
+$ ngrok http 8000
+```
+
 ### webfs
 
 ```shell
 $ webfsd -F -p 8000
 ```
-
 
 ### IIS Express
 
