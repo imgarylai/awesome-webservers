@@ -26,6 +26,8 @@ If you have any suggestions, drop them in a new pull request. To get on this lis
 4. require no configuration (from files or otherwise) beyond the command itself (no framework-specific servers, etc)
 5. must run, or have a mode where it can run, in the foreground (i.e. no daemons)
 
+## Get started
+
 #### Erlang
 
 ```shell
