@@ -26,114 +26,112 @@ If you have any suggestions, drop them in a new pull request. To get on this lis
 4. require no configuration (from files or otherwise) beyond the command itself (no framework-specific servers, etc)
 5. must run, or have a mode where it can run, in the foreground (i.e. no daemons)
 
-## Get started
-
-#### Erlang
+## Erlang
 
 ```shell
 $ erl -s inets -eval 'inets:start(httpd,[{server_name,"NAME"},{document_root, "."},{server_root, "."},{port, 8000},{mime_types,[{"html","text/html"},{"htm","text/html"},{"js","text/javascript"},{"css","text/css"},{"gif","image/gif"},{"jpg","image/jpeg"},{"jpeg","image/jpeg"},{"png","image/png"}]}]).'
 ```
 
-#### Node.js
+## Node.js
 
-##### http-server
+### http-server
 
 ```shell
 $ npm install -g http-server   # install dependency
 $ http-server -p 8000
 ```
 
-##### node-static
+### node-static
 
 ```shell
 $ npm install -g node-static
 $ static -p 8000
 ```
 
-#### Perl
+## Perl
 
 ```shell
 $ cpan HTTP::Server::Brick
 $ perl -MHTTP::Server::Brick -e '$s=HTTP::Server::Brick->new(port=>8000); $s->mount("/"=>{path=>"."}); $s->start'
 ```
 
-##### Plack
+### Plack
 
 ```shell
 $ cpan Plack
 $ plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root=>".");' -p 8000
 ```
 
-##### Mojolicious
+### Mojolicious
 
 ```shell
 $ cpan Mojolicious::Lite
 $ perl -MMojolicious::Lite -MCwd -e 'app->static->paths->[0]=getcwd; app->start' daemon -l http://*:8000
 ```
 
-#### PHP
+## PHP
 
 ```shell
 $ php -S 127.0.0.1:8000
 ```
 
-#### Python
+## Python
 
-##### Python 2
+### Python 2
 
 ```shell
 $ python -m SimpleHTTPServer 8000
 ```
 
-##### Python 3
+### Python 3
 
 ```shell
 $ python -m http.server 8000
 ```
 
-##### Twisted
+### Twisted
 
 ```shell
 $ pip install twisted
 $ twistd -n web -p 8000 --path .
 ```
 
-#### Ruby
+## Ruby
 
 ```shell
 $ ruby -run -ehttpd . -p8000
 ```
 
-##### adsf
+### adsf
 
 ```shell
 $ gem install adsf
 $ adsf -p 8000
 ```
 
-##### Sinatra
+### Sinatra
 
 ```shell
 $ gem install sinatra
 $ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
 ```
 
-#### Other
+## Other
 
-##### busybox httpd
+### busybox httpd
 
 ```shell
 $ busybox httpd -f -p 8000
 ```
 
-##### webfs
+### webfs
 
 ```shell
 $ webfsd -F -p 8000
 ```
 
 
-##### IIS Express
+### IIS Express
 
 ```shell
 C:\> "C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:C:\MyWeb /port:8000
