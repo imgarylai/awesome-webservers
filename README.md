@@ -8,7 +8,9 @@ I use the original setting for all the examples. All of them will run the server
 
 ### Language
 
+- [Clojure](#clojure)
 - [Erlang](#erlang)
+- [Go](#go)
 - [Node.js](#nodejs)
 - [Perl](#perl)
 - [PHP](#php)
@@ -25,6 +27,23 @@ If you have any suggestions, drop them in a new pull request. To get on this lis
 3. serve basic file types (html, css, js, images) with proper mime types,
 4. require no configuration (from files or otherwise) beyond the command itself (no framework-specific servers, etc)
 5. must run, or have a mode where it can run, in the foreground (i.e. no daemons)
+
+## Clogure
+
+### Leiningen
+
+```shell
+$ lein simpleton 8080
+```
+
+## Go
+
+### Spark
+
+```shell
+$ go get github.com/rif/spark
+$ spark -port 8000 .
+```
 
 ## Erlang
 
@@ -75,6 +94,12 @@ $ perl -MMojolicious::Lite -MCwd -e 'app->static->paths->[0]=getcwd; app->start'
 $ php -S 127.0.0.1:8000
 ```
 
+### Drush
+
+```shell
+$ drush rs 8080
+````
+
 ## Python
 
 ### Python 2
@@ -107,6 +132,12 @@ $ ruby -run -ehttpd . -p8000
 ```shell
 $ gem install adsf
 $ adsf -p 8000
+```
+
+### Knod
+```shell
+$ gem install knod
+$ knod -p 8000
 ```
 
 ### Sinatra
