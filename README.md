@@ -263,6 +263,11 @@ $ cargo install https
 $ http -p 8000
 ```
 
+```shell
+$ cargo install miniserve
+$ miniserve -p 8000 .
+```
+
 ## Other
 
 ### busybox httpd
