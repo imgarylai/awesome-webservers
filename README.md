@@ -263,6 +263,8 @@ $ cargo install https
 $ http -p 8000
 ```
 
+### miniserve
+
 ```shell
 $ cargo install miniserve
 $ miniserve -p 8000 .
