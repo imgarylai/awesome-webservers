@@ -258,6 +258,8 @@ $ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
 
 ## Rust
 
+### Host These Things Please
+
 ```shell
 $ cargo install https
 $ http -p 8000
@@ -268,6 +270,13 @@ $ http -p 8000
 ```shell
 $ cargo install miniserve
 $ miniserve -p 8000 .
+```
+
+### simple-http-server
+
+```shell
+$ cargo install simple-http-server
+$ simple-http-server -p 8000 -- .
 ```
 
 ## Other
