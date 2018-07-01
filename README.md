@@ -102,6 +102,12 @@ cabal install maid
 maid 8000
 ```
 
+### wai-app-static
+```shell
+cabal install wai-app-static
+warp -p 8000
+```
+
 ## Lisp
 
 ### Clack
