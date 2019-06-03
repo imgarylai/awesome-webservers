@@ -158,6 +158,11 @@ $ npm install -g superstatic
 $ superstatic public --port 8000
 ```
 
+```shell
+node -e "require('http').createServer((req,res)=>{require('fs').readFile(req.url.substr(1),(err,e)=>{res.write(e);res.en
+d()})}).listen(8088)"
+```
+
 ## Perl
 
 ```shell
