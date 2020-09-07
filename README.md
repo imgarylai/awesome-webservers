@@ -6,7 +6,7 @@ I use the original setting for all the examples. All of them will run the server
 
 ## Contents
 
-### Language
+#### Language
 
 - [Clojure](#clojure)
 - [Crystal](#crystal)
@@ -24,7 +24,7 @@ I use the original setting for all the examples. All of them will run the server
 - [Rust](#rust)
 - [Other](#other)
 
-### Meta
+#### Meta
 
 If you have any suggestions, drop them in a new pull request. To get on this list, a solution must:
 
@@ -34,10 +34,9 @@ If you have any suggestions, drop them in a new pull request. To get on this lis
 4. require no configuration (from files or otherwise) beyond the command itself (no framework-specific servers, etc)
 5. must run, or have a mode where it can run, in the foreground (i.e. no daemons)
 
-## Clogure
+## Clojure
 
-### Leiningen
-
+#### Leiningen
 ```shell
 $ lein simpleton 8000
 ```
@@ -50,8 +49,8 @@ $ crystal eval 'require "http/server"; HTTP::Server.new(8000, HTTP::StaticFileHa
 
 ## Elixir
 
-```
-elixir --no-halt --app inets -e ":inets.start(:httpd,[{:server_name,'s'},{:document_root,'.'},{:server_root,'.'},{:port,8000}])"
+```shell
+$ elixir --no-halt --app inets -e ":inets.start(:httpd,[{:server_name,'s'},{:document_root,'.'},{:server_root,'.'},{:port,8000}])"
 ```
 
 ## Erlang
@@ -62,33 +61,30 @@ $ erl -s inets -eval 'inets:start(httpd,[{server_name,"NAME"},{document_root, ".
 
 ## Go
 
-### Algernon
+#### Algernon
 ```shell
 $ go get -u github.com/xyproto/algernon
 $ algernon -x 8000
 ```
 
-### Candy
-
+#### Candy
 ```shell
 caddy -port 8000
 ```
 
-### Gost
-
+#### Gost
 ```shell
 $ go get github.com/vwochnik/gost
 $ gost -port 8888 .
 ```
 
-### Ram
+#### Ram
 ```shell
 $ go get -u github.com/m3ng9i/ran
 $ ran -p 8000
 ```
 
-### Spark
-
+#### Spark
 ```shell
 $ go get github.com/rif/spark
 $ spark -port 8000 .
@@ -96,71 +92,66 @@ $ spark -port 8000 .
 
 ## Haskell
 
-### maid
+#### maid
 ```shell
-cabal install maid
-maid 8000
+$ cabal install maid
+$ maid 8000
 ```
 
-### wai-app-static
+#### wai-app-static
 ```shell
-cabal install wai-app-static
-warp -p 8000
+$ cabal install wai-app-static
+$ warp -p 8000
 ```
 
 ## Lisp
 
-### Clack
-
-```
+#### Clack
+```shell
 $ ros install clack
 $ clackup <(echo "(lack:builder (:static :path #'identity) #'identity)")
 ```
 
 ## Node.js
 
-### Anywhere
+```shell
+$ node -e "require('http').createServer((req,res)=>{require('fs').readFile(req.url.substr(1),(err,e)=>{res.write(e);res.end()})}).listen(8088)"
+```
+
+#### Anywhere
 ```shell
 $ npm install anywhere -g
 $ anywhere -p 8000
 ```
 
-### glance
-
+#### glance
 ```shell
 $ npm install -g glance
 $ glance -p 8000
 ```
 
-### Harp
+#### Harp
 ```shell
 $ npm install -g harp
 $ harp server --port 8000
 ```
 
-### http-server
-
+#### http-server
 ```shell
-$ npm install -g http-server   # install dependency
+$ npm install -g http-server
 $ http-server -p 8000
 ```
 
-### node-static
-
+#### node-static
 ```shell
 $ npm install -g node-static
 $ static -p 8000
 ```
 
-### Superstatic
+#### Superstatic
 ```shell
 $ npm install -g superstatic
 $ superstatic public --port 8000
-```
-
-```shell
-node -e "require('http').createServer((req,res)=>{require('fs').readFile(req.url.substr(1),(err,e)=>{res.write(e);res.en
-d()})}).listen(8088)"
 ```
 
 ## Perl
@@ -170,15 +161,13 @@ $ cpan HTTP::Server::Brick
 $ perl -MHTTP::Server::Brick -e '$s=HTTP::Server::Brick->new(port=>8000); $s->mount("/"=>{path=>"."}); $s->start'
 ```
 
-### Plack
-
+#### Plack
 ```shell
 $ cpan Plack
 $ plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root=>".");' -p 8000
 ```
 
-### Mojolicious
-
+#### Mojolicious
 ```shell
 $ cpan Mojolicious::Lite
 $ perl -MMojolicious::Lite -MCwd -e 'app->static->paths->[0]=getcwd; app->start' daemon -l http://*:8000
@@ -190,40 +179,36 @@ $ perl -MMojolicious::Lite -MCwd -e 'app->static->paths->[0]=getcwd; app->start'
 $ php -S 127.0.0.1:8000
 ```
 
-### Drush
-
+#### Drush
 ```shell
 $ drush rs 8000
 ```
 
-### Laravel
-
+#### Laravel
 ```shell
 $ php artisan serve --host=127.0.0.1 --port=8000
 ```
 
 ## Python
 
-### Python 2
-
+#### Python 2
 ```shell
 $ python -m SimpleHTTPServer 8000
 ```
 
-### Python 3
-
+#### Python 3
 ```shell
 $ python -m http.server 8000
 ```
 
-### Twisted
-
+#### Twisted
 ```shell
 $ pip install twisted
 $ twistd -n web -p 8000 --path .
 ```
 
 ## R
+
 ```shell
 $ Rscript -e 'servr::httd()' -p8000
 ```
@@ -234,34 +219,31 @@ $ Rscript -e 'servr::httd()' -p8000
 $ ruby -run -ehttpd . -p8000
 ```
 
-### adsf
-
+#### adsf
 ```shell
 $ gem install adsf
 $ adsf -p 8000
 ```
 
-### Knod
+#### Knod
 ```shell
 $ gem install knod
 $ knod -p 8000
 ```
 
-### Rack
+#### Rack
 ```shell
 $ gem install rack
 $ rackup -b 'use Rack::Static, :index => 'index.html'; run Rack::File.new('.')"
 ```
 
-### Serve
-
+#### Serve
 ```shell
 $ gem install serve
 $ serve 8000
 ```
 
-### Sinatra
-
+#### Sinatra
 ```shell
 $ gem install sinatra
 $ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
@@ -269,22 +251,19 @@ $ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
 
 ## Rust
 
-### Host These Things Please
-
+#### Host These Things Please
 ```shell
 $ cargo install https
 $ http -p 8000
 ```
 
-### miniserve
-
+#### miniserve
 ```shell
 $ cargo install miniserve
 $ miniserve -p 8000 .
 ```
 
-### simple-http-server
-
+#### simple-http-server
 ```shell
 $ cargo install simple-http-server
 $ simple-http-server -p 8000 -- .
@@ -292,25 +271,22 @@ $ simple-http-server -p 8000 -- .
 
 ## Other
 
-### busybox httpd
-
+#### busybox httpd
 ```shell
 $ busybox httpd -f -p 8000
 ```
 
-### ngrok
+#### ngrok
 ```shell
 $ ngrok http 8000
 ```
 
-### webfs
-
+#### webfs
 ```shell
 $ webfsd -F -p 8000
 ```
 
-### IIS Express
-
+#### IIS Express
 ```shell
 C:\> "C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:C:\MyWeb /port:8000
 ```
